@@ -28,10 +28,7 @@ export default class RethinkdbAdapter extends ORMAdapter {
   }
 
   buildRecord(type, data) {
-    return {
-      type,
-      record: data
-    };
+    return data;
   }
 
   idFor(model) {
