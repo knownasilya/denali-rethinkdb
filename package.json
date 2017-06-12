@@ -1,0 +1,45 @@
+{
+  "name": "denali-rethinkdb",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "denali build",
+    "coverage": "scripts/coverage.sh",
+    "preversion": "scripts/preversion.sh",
+    "release": "scripts/release.sh",
+    "test": "scripts/test.sh"
+  },
+  "keywords": [
+    "denali",
+    "denali-addon",
+    "addon",
+    "rethinkdb",
+    "adapter"
+  ],
+  "main": "app/addon.js",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "denali": "0.0.x",
+    "denali-cli": "0.0.x",
+    "lodash": "^4.17.4",
+    "rethinkdb": "^2.3.3"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "babel-eslint": "^7.2.0",
+    "babel-plugin-istanbul": "^3.1.2",
+    "babel-plugin-transform-class-properties": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.24.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "denali-babel": "0.0.x",
+    "denali-cli": "0.0.x",
+    "denali-eslint": "0.0.x",
+    "nyc": "^10.1.2",
+    "standard-version": "^4.0.0"
+  },
+  "ava": {
+    "plugins": [],
+    "presets": []
+  }
+}
