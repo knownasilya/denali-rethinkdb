@@ -8,6 +8,7 @@ export default {
     let dbConfig = config.database;
     let autoCreateTables = dbConfig.autoCreateTables;
 
+    // TODO: replace with auto model lookup and create by model types
     if (autoCreateTables && dbConfig.tables) {
       let connection = container.lookup('database:rethinkdb', { loose: true });
       let existingTables = await rethinkdb.tableList().run(connection);

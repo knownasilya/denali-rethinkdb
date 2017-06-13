@@ -19,6 +19,8 @@ export default {
     } catch (error) {
       logger.error('Error initializing the rethinkdb adapter or database connection:');
       logger.error(error.stack);
+
+      throw error;
     }
   }
 };
