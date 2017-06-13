@@ -1,7 +1,5 @@
 import { ORMAdapter, inject } from 'denali';
-import { fromNode } from 'bluebird';
 import rethinkdb from 'rethinkdb';
-import upperFirst from 'lodash/upperFirst';
 
 export default class RethinkdbAdapter extends ORMAdapter {
   connection = inject('database:rethinkdb');
