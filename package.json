@@ -21,7 +21,6 @@
     "bluebird": "^3.5.0",
     "denali": "0.0.x",
     "denali-cli": "0.0.x",
-    "lodash": "^4.17.4",
     "rethinkdb": "^2.3.3"
   },
   "devDependencies": {
