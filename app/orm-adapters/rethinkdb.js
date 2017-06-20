@@ -38,11 +38,6 @@ export default class RethinkdbAdapter extends ORMAdapter {
     return rethinkdb.table(table).filter(query).nth(0).run(this.connection);
   }
 
-  createRecord(type, data) {
-    let table = pluralize(type);
-    return rethinkdb.table(table).insert(data).run(this.connection);
-  }
-
   buildRecord(type, data) {
     return data;
   }
@@ -67,7 +62,12 @@ export default class RethinkdbAdapter extends ORMAdapter {
 
   saveRecord({ type, record }) {
     let table = pluralize(type);
-    return rethinkdb.table(table).get(record.id).update(record).run(this.connection);
+
+    if (record.id) {
+      return rethinkdb.table(table).get(record.id).update(record).run(this.connection);
+    }
+
+    return rethinkdb.table(table).insert(record).run(this.connection);
   }
 
   deleteRecord({ type, record }) {
