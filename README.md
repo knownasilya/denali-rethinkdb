@@ -28,24 +28,18 @@ config.database = {
     port: 28015,
     db: 'test'
   },
-  autoCreateTables: true,
-  // This option will be removed once we
-  // implement getting the names from the models
-  tables: [
-    'test'
-  ]
+  autoCreateTables: true
 };
 ```
 
 ## Opinions
 
-Currently, this adapter assumes singular table names and as-is attribute names.
-For example, for the Denali model defined below:
+Currently, this adapter converts model names into plural table names.
 
 ```js
 export default class Issue extends Model {
 
-  static createdAt = attr('date'); // maps to the issue table and createdAt column
+  static createdAt = attr('date'); // maps to the issued table and createdAt column
 
 }
 ```

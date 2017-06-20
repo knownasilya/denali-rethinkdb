@@ -1,28 +1,34 @@
 import { ORMAdapter, inject } from 'denali';
 import rethinkdb from 'rethinkdb';
+import { pluralize } from 'inflection';
 
 export default class RethinkdbAdapter extends ORMAdapter {
   connection = inject('database:rethinkdb');
 
   find(type, id) {
-    return rethinkdb.table(type).get(id).run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).get(id).run(this.connection);
   }
 
   async all(type) {
-    let cursor = await rethinkdb.table(type).run(this.connection);
+    let table = pluralize(type);
+    let cursor = await rethinkdb.table(table).run(this.connection);
     return cursor.toArray();
   }
 
   query(type, query) {
-    return rethinkdb.table(type).filter(query).run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).filter(query).run(this.connection);
   }
 
   findOne(type, query) {
-    return rethinkdb.table(type).filter(query).nth(0).run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).filter(query).nth(0).run(this.connection);
   }
 
   createRecord(type, data) {
-    return rethinkdb.table(type).insert(data).run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).insert(data).run(this.connection);
   }
 
   buildRecord(type, data) {
@@ -48,11 +54,13 @@ export default class RethinkdbAdapter extends ORMAdapter {
   }
 
   saveRecord({ type, record }) {
-    return rethinkdb.table(type).get(record.id).update(record).run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).get(record.id).update(record).run(this.connection);
   }
 
   deleteRecord({ type, record }) {
-    return rethinkdb.table(type).get(record.id).delete().run(this.connection);
+    let table = pluralize(type);
+    return rethinkdb.table(table).get(record.id).delete().run(this.connection);
   }
 
 }

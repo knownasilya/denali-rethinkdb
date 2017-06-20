@@ -1,4 +1,5 @@
 import rethinkdb from 'rethinkdb';
+import { pluralize } from 'inflection';
 
 export default {
   name: 'sync-database',
@@ -7,17 +8,18 @@ export default {
   async initialize({ container, config }) {
     let dbConfig = config.database;
     let autoCreateTables = dbConfig.autoCreateTables;
+    let modelsHash = container.lookupAll('model');
+    let concreteModelNames = Object.keys(modelsHash).filter((model) => !model.abstract);
 
-    // TODO: replace with auto model lookup and create by model types
-    if (autoCreateTables && dbConfig.tables) {
+    if (autoCreateTables && concreteModelNames.length) {
       let connection = container.lookup('database:rethinkdb', { loose: true });
       let existingTables = await rethinkdb.tableList().run(connection);
 
-      for (let index in dbConfig.tables) {
-        let table = dbConfig.tables[index];
+      for (let index in concreteModelNames) {
+        let tableName = pluralize(concreteModelNames[index]);
 
-        if (!existingTables.includes(table)) {
-          await rethinkdb.tableCreate(table).run(connection);
+        if (!existingTables.includes(tableName)) {
+          await rethinkdb.tableCreate(tableName).run(connection);
         }
       }
     }
