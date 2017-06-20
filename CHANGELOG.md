@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/knownasilya/denali-rethinkdb/compare/v0.1.1...v0.1.2) (2017-06-20)
+
+
+### Bug Fixes
+
+* git ignore and connect throw error ([dead9a2](https://github.com/knownasilya/denali-rethinkdb/commit/dead9a2))
+* **deps:** use denali 0.0.27 and update lock file ([946e887](https://github.com/knownasilya/denali-rethinkdb/commit/946e887))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/knownasilya/denali-rethinkdb/compare/v0.1.0...v0.1.1) (2017-06-13)
 
