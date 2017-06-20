@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/knownasilya/denali-rethinkdb/compare/v0.1.3...v0.2.0) (2017-06-20)
+
+
+### Features
+
+* allow function in db.query('model', (query) => query.filter(..)) ([0ea45de](https://github.com/knownasilya/denali-rethinkdb/commit/0ea45de))
+* Auto create tables based on model names ([7e8db36](https://github.com/knownasilya/denali-rethinkdb/commit/7e8db36))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/knownasilya/denali-rethinkdb/compare/v0.1.2...v0.1.3) (2017-06-20)
 
