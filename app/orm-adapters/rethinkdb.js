@@ -63,13 +63,19 @@ export default class RethinkdbAdapter extends ORMAdapter {
   async saveRecord(model) {
     let { type, record } = model;
     let table = pluralize(type);
+    let result;
 
     if (record.id) {
-      model.record = await rethinkdb.table(table).get(record.id).update(record).run(this.connection);
-      return;
+      result = await rethinkdb.table(table).get(record.id).update(record).run(this.connection);
+    } else {
+      result = await rethinkdb.table(table).insert(record).run(this.connection);
     }
 
-    model.record = await rethinkdb.table(table).insert(record).run(this.connection);
+    if (result && result.inserted === 1) {
+      model.record.id = result.generated_keys[0];
+    } else {
+      throw new Error('Failed to save record');
+    }
   }
 
   deleteRecord({ type, record }) {
