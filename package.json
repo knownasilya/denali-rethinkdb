@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "denali": "0.0.27",
+    "denali": "0.0.29",
     "denali-cli": "0.0.12",
     "inflection": "^1.12.0",
     "rethinkdb": "^2.3.3"
@@ -36,7 +36,7 @@
     "denali-cli": "0.0.x",
     "denali-eslint": "0.0.x",
     "nyc": "^10.1.2",
-    "standard-version": "^4.0.0"
+    "standard-version": "^4.2.0"
   },
   "ava": {
     "plugins": [],
