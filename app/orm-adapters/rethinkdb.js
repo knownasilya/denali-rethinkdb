@@ -21,9 +21,9 @@ export default class RethinkdbAdapter extends ORMAdapter {
 
     if (typeof query === 'function') {
       let base = rethinkdb.table(table);
-      let result = query(base).run(this.connection);
+      let result = query(base);
 
-      if (result && result.run) {
+      if (result && typeof result.run === 'function') {
         return result.run(this.connection);
       }
 
